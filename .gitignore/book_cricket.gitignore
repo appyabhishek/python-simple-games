@@ -1,0 +1,207 @@
+import random
+import time
+
+print("**********LET'S PLAY CRICKET**********")
+time.sleep(3)
+
+player1 = input("Player 1 enter your name ")
+player2 = input("Player 2 enter your name ")
+player_select = random.randint(1,2)
+#print("player" , player_select)
+if(player_select == 1):
+    toss_select = int(input( player1 + " Press 1  to select HEAD or 2 to select TAILS "))
+elif(player_select == 2):
+    toss_select = int(input( player2 + " Press 1  to select HEAD or 2 to select TAILS "))
+    
+    
+
+
+toss = random.randint(1,2)
+time.sleep(2)
+print("Umpire tosed the coin...........")
+time.sleep(5)
+player1_flag = 0
+player2_flag = 0
+if(toss == toss_select):
+    print(" Congo player " , player_select , " wins the toss")
+    if(player_select == 1):
+        #print("ITS YOUR TURN" + player1)
+        player1_flag = 1
+    elif(player_select == 2):
+        #print("ITS YOUR TURN" + player2)
+        player2_flag = 1
+
+elif(toss != toss_select):
+    print("player " , player_select , " lost the toss")
+    if(player_select == 1):
+        #print("ITS YOUR TURN" + player2)
+        player2_flag = 1
+
+    elif(player_select == 2):
+        #print("ITS YOUR TURN" + player1)
+        player1_flag = 1
+        
+        
+
+
+player1_score = 0
+player2_score = 0
+player1_count = 0
+player2_count = 0
+
+if(player1_flag == 1):
+    print(player1 , "you will bat first")
+    while(player1_count < 12 ):
+        player1_decision = input( str(player1) + " enter 'Y' to face the ball or 'X' to quit the game")
+        if(player1_decision == 'x' or player1_decision == 'X'):
+            print(player2," WINS")
+            break
+        elif(player1_decision == 'y' or player1_decision =='Y'):
+            score1 = random.randint(1,99)
+            if(score1 < 10):
+                if(score1 == 1 or score1 == 2 or score1 == 4 or score1 == 6):
+                    player1_score = score1 + player1_score
+                    print(player1 , "you scored" , score1 , "runs" )
+                    print("Your score is now" , player1_score)
+                    player1_count += 1
+                else:
+                    print(" GOOD DEFENCE ")
+                
+                
+            elif(score1 > 9 and (score1 % 10) != 0):
+                score1 = score1%10
+                if(score1 == 1 or score1 == 2 or score1 == 4 or score1 == 6):
+                    player1_score = score1 + player1_score
+                    print(player1 , "you scored" , score1 , "runs" )
+                    print("Your score is now" , player1_score)
+                    player1_count += 1
+                else:
+                    print(" GOOD DEFENCE ")
+                    
+               
+            elif((score1%10) == 0):
+                print("**** OUT ****")
+                print("Your final score is now" , player1_score)
+                break
+
+
+    while(player2_count < 12 ):
+        if(player2_score > player1_score or (player1_decision == 'x' or player1_decision == 'X')):
+            #print(player2, " WINS")
+            break
+        player2_decision = input(str(player2) + " enter 'Y' to face the ball or 'X' to quit the game")
+        if(player2_decision == 'x' or player2_decision == 'X'):
+            print(player1," WINS")
+            break
+        elif(player2_decision == 'y' or player2_decision =='Y'):
+            score2 = random.randint(1,99)
+            if(score2 < 10):
+                if(score2 == 1 or score2 == 2 or score2 == 4 or score2 == 6):
+                    player2_score = score2 + player2_score
+                    print(player2 , "you scored" , score2 , "runs" )
+                    print("Your score is now" , player2_score)
+                    player2_count += 1
+                else:
+                    print(" GOOD DEFENCE ")
+
+            elif(score2 > 9 and (score2 % 10) != 0):
+                score2 = score2%10
+                if(score2 == 1 or score2 == 2 or score2 == 4 or score2 == 6):
+                    player2_score = score2 + player2_score
+                    print(player2 , "you scored" , score2 , "runs" )
+                    print("Your score is now" , player2_score)
+                    player2_count += 1
+                else:
+                    print(" GOOD DEFENCE ")
+                
+            elif((score2%10) == 0):
+                print("**** OUT ****")
+                print("Your final score is now" , player2_score)
+                if(player1_score>player2_score):
+                    print(player1," WINS")
+                if(player2_score>player1_score):
+                    print(player2," WINS")
+                break
+        elif(player2_count == 12 and player2_score <player1_score):
+            print(player1, " WINS")
+
+                
+            
+        
+elif(player2_flag == 1):
+    while(player2_count < 12 ):
+        player2_decision = input(str(player2) + " enter 'Y' to face the ball or 'X' to quit the game")
+        if(player2_decision == 'x' or player2_decision == 'X'):
+            #print(player1," WINS")
+            break
+        elif(player2_decision == 'y' or player2_decision =='Y'):
+            score2 = random.randint(1,99)
+            if(score2 < 10):
+                player2_score = score2 + player2_score
+                print(player2 , "you scored" , score2 , "runs" )
+                print("Your score is now" , player2_score)
+                player2_count += 1
+            elif(score2 > 9 and (score2 % 10) != 0):
+                score2 = score2%10
+                if(score2 == 1 or score2 == 2 or score2 == 4 or score2 == 6):
+                    player2_score = score2 + player2_score
+                    print(player2 , "you scored" , score2 , "runs" )
+                    print("Your score is now" , player2_score)
+                    player2_count += 1
+                else:
+                    print(" GOOD DEFENCE ")
+                
+            elif((score2%10) == 0):
+                print("**** OUT ****")
+                print("Your final score is now" , player2_score)
+                break
+
+    while(player1_count < 13 ):
+        if(player1_score > player2_score or (player2_decision == 'x' or player2_decision == 'X')):
+            print(player1 , " WINS")
+            break
+        player1_decision = input(str(player1) + " enter 'Y' to face the ball or 'X' to quit the game")
+        if(player1_decision == 'x' or player1_decision == 'X'):
+            print(player2," WINS")
+            break
+        elif(player1_decision == 'y' or player1_decision =='Y'):
+            score1 = random.randint(1,99)
+            if(score1 < 10):
+                player1_score = score1 + player1_score
+                print(player1 , "you scored" , score1 , "runs" )
+                print("Your score is now" , player1_score)
+                player1_count += 1
+            elif(score1 > 9 and (score1 % 10) != 0):
+                score1 = score1%10
+                if(score1 == 1 or score1 == 2 or score1 == 4 or score1 == 6):
+                    player1_score = score1 + player1_score
+                    print(player1 , "you scored" , score1 , "runs" )
+                    print("Your score is now" , player1_score)
+                    player1_count += 1
+                else:
+                    print(" GOOD DEFENCE ")
+               
+            elif((score1%10) == 0):
+                print("**** OUT ****")
+                print("Your final score is now" , player1_score)
+                if(player1_score>player2_score):
+                    print(player1," WINS")
+                if(player2_score>player1_score):
+                    print(player2," WINS")
+                break
+
+        elif(player1_count == 12 and player1_score <player2_score):
+            print(player2, " WINS")
+
+
+
+   
+             
+            
+                     
+             
+    
+
+
+
+
